@@ -1,0 +1,3 @@
+/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles/md_simulation.dir
+/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles/edit_cache.dir
+/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles/rebuild_cache.dir
