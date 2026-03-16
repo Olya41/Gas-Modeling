@@ -129,101 +129,101 @@ md_simulation/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/build
 .PHONY : md_simulation/fast
 
-forces.o: forces.cpp.o
-.PHONY : forces.o
+src/forces.o: src/forces.cpp.o
+.PHONY : src/forces.o
 
 # target to build an object file
-forces.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/forces.cpp.o
-.PHONY : forces.cpp.o
+src/forces.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/forces.cpp.o
+.PHONY : src/forces.cpp.o
 
-forces.i: forces.cpp.i
-.PHONY : forces.i
+src/forces.i: src/forces.cpp.i
+.PHONY : src/forces.i
 
 # target to preprocess a source file
-forces.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/forces.cpp.i
-.PHONY : forces.cpp.i
+src/forces.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/forces.cpp.i
+.PHONY : src/forces.cpp.i
 
-forces.s: forces.cpp.s
-.PHONY : forces.s
+src/forces.s: src/forces.cpp.s
+.PHONY : src/forces.s
 
 # target to generate assembly for a file
-forces.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/forces.cpp.s
-.PHONY : forces.cpp.s
+src/forces.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/forces.cpp.s
+.PHONY : src/forces.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-simulation.o: simulation.cpp.o
-.PHONY : simulation.o
+src/simulation.o: src/simulation.cpp.o
+.PHONY : src/simulation.o
 
 # target to build an object file
-simulation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/simulation.cpp.o
-.PHONY : simulation.cpp.o
+src/simulation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/simulation.cpp.o
+.PHONY : src/simulation.cpp.o
 
-simulation.i: simulation.cpp.i
-.PHONY : simulation.i
+src/simulation.i: src/simulation.cpp.i
+.PHONY : src/simulation.i
 
 # target to preprocess a source file
-simulation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/simulation.cpp.i
-.PHONY : simulation.cpp.i
+src/simulation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/simulation.cpp.i
+.PHONY : src/simulation.cpp.i
 
-simulation.s: simulation.cpp.s
-.PHONY : simulation.s
+src/simulation.s: src/simulation.cpp.s
+.PHONY : src/simulation.s
 
 # target to generate assembly for a file
-simulation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/simulation.cpp.s
-.PHONY : simulation.cpp.s
+src/simulation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/simulation.cpp.s
+.PHONY : src/simulation.cpp.s
 
-verlet.o: verlet.cpp.o
-.PHONY : verlet.o
+src/verlet.o: src/verlet.cpp.o
+.PHONY : src/verlet.o
 
 # target to build an object file
-verlet.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/verlet.cpp.o
-.PHONY : verlet.cpp.o
+src/verlet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/verlet.cpp.o
+.PHONY : src/verlet.cpp.o
 
-verlet.i: verlet.cpp.i
-.PHONY : verlet.i
+src/verlet.i: src/verlet.cpp.i
+.PHONY : src/verlet.i
 
 # target to preprocess a source file
-verlet.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/verlet.cpp.i
-.PHONY : verlet.cpp.i
+src/verlet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/verlet.cpp.i
+.PHONY : src/verlet.cpp.i
 
-verlet.s: verlet.cpp.s
-.PHONY : verlet.s
+src/verlet.s: src/verlet.cpp.s
+.PHONY : src/verlet.s
 
 # target to generate assembly for a file
-verlet.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/verlet.cpp.s
-.PHONY : verlet.cpp.s
+src/verlet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_simulation.dir/build.make CMakeFiles/md_simulation.dir/src/verlet.cpp.s
+.PHONY : src/verlet.cpp.s
 
 # Help Target
 help:
@@ -234,18 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... md_simulation"
-	@echo "... forces.o"
-	@echo "... forces.i"
-	@echo "... forces.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... simulation.o"
-	@echo "... simulation.i"
-	@echo "... simulation.s"
-	@echo "... verlet.o"
-	@echo "... verlet.i"
-	@echo "... verlet.s"
+	@echo "... src/forces.o"
+	@echo "... src/forces.i"
+	@echo "... src/forces.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/simulation.o"
+	@echo "... src/simulation.i"
+	@echo "... src/simulation.s"
+	@echo "... src/verlet.o"
+	@echo "... src/verlet.i"
+	@echo "... src/verlet.s"
 .PHONY : help
 
 

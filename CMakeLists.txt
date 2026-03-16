@@ -11,8 +11,10 @@ endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 add_executable(md_simulation
-    main.cpp
-    forces.cpp
-    verlet.cpp
-    simulation.cpp
+    src/main.cpp
+    src/forces.cpp
+    src/verlet.cpp
+    src/simulation.cpp
 )
+
+target_include_directories(md_simulation PRIVATE src)

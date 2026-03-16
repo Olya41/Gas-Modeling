@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/olga/mipt/Выч_физ_горизонты/src
 
 CXX_FLAGS = -O2 -std=gnu++17
 

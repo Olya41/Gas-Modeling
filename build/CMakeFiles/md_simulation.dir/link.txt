@@ -1,1 +1,1 @@
-/usr/bin/c++ -O2 CMakeFiles/md_simulation.dir/main.cpp.o CMakeFiles/md_simulation.dir/forces.cpp.o CMakeFiles/md_simulation.dir/verlet.cpp.o CMakeFiles/md_simulation.dir/simulation.cpp.o -o md_simulation 
+/usr/bin/c++ -O2 CMakeFiles/md_simulation.dir/src/main.cpp.o CMakeFiles/md_simulation.dir/src/forces.cpp.o CMakeFiles/md_simulation.dir/src/verlet.cpp.o CMakeFiles/md_simulation.dir/src/simulation.cpp.o -o md_simulation 

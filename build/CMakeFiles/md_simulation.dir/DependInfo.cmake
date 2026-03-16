@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/olga/mipt/Выч_физ_горизонты/forces.cpp" "CMakeFiles/md_simulation.dir/forces.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/forces.cpp.o.d"
-  "/home/olga/mipt/Выч_физ_горизонты/main.cpp" "CMakeFiles/md_simulation.dir/main.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/main.cpp.o.d"
-  "/home/olga/mipt/Выч_физ_горизонты/simulation.cpp" "CMakeFiles/md_simulation.dir/simulation.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/simulation.cpp.o.d"
-  "/home/olga/mipt/Выч_физ_горизонты/verlet.cpp" "CMakeFiles/md_simulation.dir/verlet.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/verlet.cpp.o.d"
+  "/home/olga/mipt/Выч_физ_горизонты/src/forces.cpp" "CMakeFiles/md_simulation.dir/src/forces.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/src/forces.cpp.o.d"
+  "/home/olga/mipt/Выч_физ_горизонты/src/main.cpp" "CMakeFiles/md_simulation.dir/src/main.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/src/main.cpp.o.d"
+  "/home/olga/mipt/Выч_физ_горизонты/src/simulation.cpp" "CMakeFiles/md_simulation.dir/src/simulation.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/src/simulation.cpp.o.d"
+  "/home/olga/mipt/Выч_физ_горизонты/src/verlet.cpp" "CMakeFiles/md_simulation.dir/src/verlet.cpp.o" "gcc" "CMakeFiles/md_simulation.dir/src/verlet.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

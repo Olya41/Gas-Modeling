@@ -69,76 +69,76 @@ include CMakeFiles/md_simulation.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/md_simulation.dir/flags.make
 
-CMakeFiles/md_simulation.dir/main.cpp.o: CMakeFiles/md_simulation.dir/flags.make
-CMakeFiles/md_simulation.dir/main.cpp.o: /home/olga/mipt/Выч_физ_горизонты/main.cpp
-CMakeFiles/md_simulation.dir/main.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/md_simulation.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/main.cpp.o -MF CMakeFiles/md_simulation.dir/main.cpp.o.d -o CMakeFiles/md_simulation.dir/main.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/main.cpp
+CMakeFiles/md_simulation.dir/src/main.cpp.o: CMakeFiles/md_simulation.dir/flags.make
+CMakeFiles/md_simulation.dir/src/main.cpp.o: /home/olga/mipt/Выч_физ_горизонты/src/main.cpp
+CMakeFiles/md_simulation.dir/src/main.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/md_simulation.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/src/main.cpp.o -MF CMakeFiles/md_simulation.dir/src/main.cpp.o.d -o CMakeFiles/md_simulation.dir/src/main.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/src/main.cpp
 
-CMakeFiles/md_simulation.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/main.cpp > CMakeFiles/md_simulation.dir/main.cpp.i
+CMakeFiles/md_simulation.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/src/main.cpp > CMakeFiles/md_simulation.dir/src/main.cpp.i
 
-CMakeFiles/md_simulation.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/main.cpp -o CMakeFiles/md_simulation.dir/main.cpp.s
+CMakeFiles/md_simulation.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/src/main.cpp -o CMakeFiles/md_simulation.dir/src/main.cpp.s
 
-CMakeFiles/md_simulation.dir/forces.cpp.o: CMakeFiles/md_simulation.dir/flags.make
-CMakeFiles/md_simulation.dir/forces.cpp.o: /home/olga/mipt/Выч_физ_горизонты/forces.cpp
-CMakeFiles/md_simulation.dir/forces.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/md_simulation.dir/forces.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/forces.cpp.o -MF CMakeFiles/md_simulation.dir/forces.cpp.o.d -o CMakeFiles/md_simulation.dir/forces.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/forces.cpp
+CMakeFiles/md_simulation.dir/src/forces.cpp.o: CMakeFiles/md_simulation.dir/flags.make
+CMakeFiles/md_simulation.dir/src/forces.cpp.o: /home/olga/mipt/Выч_физ_горизонты/src/forces.cpp
+CMakeFiles/md_simulation.dir/src/forces.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/md_simulation.dir/src/forces.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/src/forces.cpp.o -MF CMakeFiles/md_simulation.dir/src/forces.cpp.o.d -o CMakeFiles/md_simulation.dir/src/forces.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/src/forces.cpp
 
-CMakeFiles/md_simulation.dir/forces.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/forces.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/forces.cpp > CMakeFiles/md_simulation.dir/forces.cpp.i
+CMakeFiles/md_simulation.dir/src/forces.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/src/forces.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/src/forces.cpp > CMakeFiles/md_simulation.dir/src/forces.cpp.i
 
-CMakeFiles/md_simulation.dir/forces.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/forces.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/forces.cpp -o CMakeFiles/md_simulation.dir/forces.cpp.s
+CMakeFiles/md_simulation.dir/src/forces.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/src/forces.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/src/forces.cpp -o CMakeFiles/md_simulation.dir/src/forces.cpp.s
 
-CMakeFiles/md_simulation.dir/verlet.cpp.o: CMakeFiles/md_simulation.dir/flags.make
-CMakeFiles/md_simulation.dir/verlet.cpp.o: /home/olga/mipt/Выч_физ_горизонты/verlet.cpp
-CMakeFiles/md_simulation.dir/verlet.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/md_simulation.dir/verlet.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/verlet.cpp.o -MF CMakeFiles/md_simulation.dir/verlet.cpp.o.d -o CMakeFiles/md_simulation.dir/verlet.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/verlet.cpp
+CMakeFiles/md_simulation.dir/src/verlet.cpp.o: CMakeFiles/md_simulation.dir/flags.make
+CMakeFiles/md_simulation.dir/src/verlet.cpp.o: /home/olga/mipt/Выч_физ_горизонты/src/verlet.cpp
+CMakeFiles/md_simulation.dir/src/verlet.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/md_simulation.dir/src/verlet.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/src/verlet.cpp.o -MF CMakeFiles/md_simulation.dir/src/verlet.cpp.o.d -o CMakeFiles/md_simulation.dir/src/verlet.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/src/verlet.cpp
 
-CMakeFiles/md_simulation.dir/verlet.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/verlet.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/verlet.cpp > CMakeFiles/md_simulation.dir/verlet.cpp.i
+CMakeFiles/md_simulation.dir/src/verlet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/src/verlet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/src/verlet.cpp > CMakeFiles/md_simulation.dir/src/verlet.cpp.i
 
-CMakeFiles/md_simulation.dir/verlet.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/verlet.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/verlet.cpp -o CMakeFiles/md_simulation.dir/verlet.cpp.s
+CMakeFiles/md_simulation.dir/src/verlet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/src/verlet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/src/verlet.cpp -o CMakeFiles/md_simulation.dir/src/verlet.cpp.s
 
-CMakeFiles/md_simulation.dir/simulation.cpp.o: CMakeFiles/md_simulation.dir/flags.make
-CMakeFiles/md_simulation.dir/simulation.cpp.o: /home/olga/mipt/Выч_физ_горизонты/simulation.cpp
-CMakeFiles/md_simulation.dir/simulation.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/md_simulation.dir/simulation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/simulation.cpp.o -MF CMakeFiles/md_simulation.dir/simulation.cpp.o.d -o CMakeFiles/md_simulation.dir/simulation.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/simulation.cpp
+CMakeFiles/md_simulation.dir/src/simulation.cpp.o: CMakeFiles/md_simulation.dir/flags.make
+CMakeFiles/md_simulation.dir/src/simulation.cpp.o: /home/olga/mipt/Выч_физ_горизонты/src/simulation.cpp
+CMakeFiles/md_simulation.dir/src/simulation.cpp.o: CMakeFiles/md_simulation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/md_simulation.dir/src/simulation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/md_simulation.dir/src/simulation.cpp.o -MF CMakeFiles/md_simulation.dir/src/simulation.cpp.o.d -o CMakeFiles/md_simulation.dir/src/simulation.cpp.o -c /home/olga/mipt/Выч_физ_горизонты/src/simulation.cpp
 
-CMakeFiles/md_simulation.dir/simulation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/simulation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/simulation.cpp > CMakeFiles/md_simulation.dir/simulation.cpp.i
+CMakeFiles/md_simulation.dir/src/simulation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/md_simulation.dir/src/simulation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/olga/mipt/Выч_физ_горизонты/src/simulation.cpp > CMakeFiles/md_simulation.dir/src/simulation.cpp.i
 
-CMakeFiles/md_simulation.dir/simulation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/simulation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/simulation.cpp -o CMakeFiles/md_simulation.dir/simulation.cpp.s
+CMakeFiles/md_simulation.dir/src/simulation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/md_simulation.dir/src/simulation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/olga/mipt/Выч_физ_горизонты/src/simulation.cpp -o CMakeFiles/md_simulation.dir/src/simulation.cpp.s
 
 # Object files for target md_simulation
 md_simulation_OBJECTS = \
-"CMakeFiles/md_simulation.dir/main.cpp.o" \
-"CMakeFiles/md_simulation.dir/forces.cpp.o" \
-"CMakeFiles/md_simulation.dir/verlet.cpp.o" \
-"CMakeFiles/md_simulation.dir/simulation.cpp.o"
+"CMakeFiles/md_simulation.dir/src/main.cpp.o" \
+"CMakeFiles/md_simulation.dir/src/forces.cpp.o" \
+"CMakeFiles/md_simulation.dir/src/verlet.cpp.o" \
+"CMakeFiles/md_simulation.dir/src/simulation.cpp.o"
 
 # External object files for target md_simulation
 md_simulation_EXTERNAL_OBJECTS =
 
-md_simulation: CMakeFiles/md_simulation.dir/main.cpp.o
-md_simulation: CMakeFiles/md_simulation.dir/forces.cpp.o
-md_simulation: CMakeFiles/md_simulation.dir/verlet.cpp.o
-md_simulation: CMakeFiles/md_simulation.dir/simulation.cpp.o
+md_simulation: CMakeFiles/md_simulation.dir/src/main.cpp.o
+md_simulation: CMakeFiles/md_simulation.dir/src/forces.cpp.o
+md_simulation: CMakeFiles/md_simulation.dir/src/verlet.cpp.o
+md_simulation: CMakeFiles/md_simulation.dir/src/simulation.cpp.o
 md_simulation: CMakeFiles/md_simulation.dir/build.make
 md_simulation: CMakeFiles/md_simulation.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/olga/mipt/Выч_физ_горизонты/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable md_simulation"
