@@ -58,19 +58,8 @@ static void write_row(std::ofstream& f, double t,
 void run_simulation(const SimParams& p) {
     double cell_size = std::cbrt(static_cast<double>(p.N) / p.rho);
 
-    std::cout << "=== MD Lennard-Jones (C++) ===" << std::endl;
-    std::cout << "N = " << p.N << std::endl;
-    std::cout << "dt = " << p.dt << std::endl;
-    std::cout << "NUM = " << p.NUM << " steps (total time "
-              << p.NUM * p.dt << ")" << std::endl;
-    std::cout << "rho = " << p.rho << std::endl;
-    std::cout << "cell_size = " << cell_size << std::endl;
-    std::cout << "r_cut = " << p.r_cut << std::endl;
-    std::cout << "energy_log = " << (p.energy_log ? "true" : "false")
-              << std::endl << std::endl;
-
     auto pos = init_lattice(p.N, cell_size);
-    auto vel = std::vector<Vec3>(p.N, {0.0, 0.0, 0.0});
+    auto vel = init_velocities(p.N);
     std::vector<Vec3> acc(p.N, {0.0, 0.0, 0.0});
     compute_accelerations(pos, cell_size, p.r_cut, acc);
 

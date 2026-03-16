@@ -46,11 +46,26 @@ plt.tight_layout()
 plt.savefig("output/plots/vel_linear.png", dpi=150)
 print(f"T_fit = {T_fit:.4f}, saved to output/plots/vel_linear.png")
 
-# Total energy vs time
+# Energy vs time
 edata = np.loadtxt("output/data/energies.txt")
 times = edata[:, 0]
+Ek_t  = edata[:, 1]
+Ep_t  = edata[:, 2]
 Etot  = edata[:, 3]
 
+plt.figure(figsize=(10, 6))
+plt.plot(times, Ek_t, label="Ek")
+plt.plot(times, Ep_t, label="Ep")
+plt.plot(times, Etot, label="Etot", lw=2, color="black")
+plt.xlabel("t")
+plt.ylabel("E")
+plt.title("E(t)")
+plt.legend()
+plt.tight_layout()
+plt.savefig("output/plots/energy.png", dpi=150)
+print("Saved output/plots/energy.png")
+
+# Total energy separately
 plt.figure(figsize=(10, 6))
 plt.plot(times, Etot, color='black')
 plt.xlabel('t')

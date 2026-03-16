@@ -4,12 +4,14 @@ from numba import njit
 
 @njit
 def lennard_jones_potential(r: float) -> float:
-    return 4 * ((1 / r) ** 12 - (1 / r) ** 6)
+    r6 = 1.0 / (r * r * r * r * r * r)
+    return 4.0 * (r6 * r6 - r6)
 
 
 @njit
 def lennard_jones_force(r: float) -> float:
-    return 24 * (2 * (1 / r) ** 12 - (1 / r) ** 6) / r
+    r6 = 1.0 / (r * r * r * r * r * r)
+    return 24.0 * (2.0 * r6 * r6 - r6) / r
 
 
 @njit

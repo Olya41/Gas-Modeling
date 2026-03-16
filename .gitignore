@@ -2,3 +2,8 @@ output/
 build/
 __pycache__/
 *.pyc
+*.txt
+!CMakeLists.txt
+*.png
+*.mp4
+*.xyz
