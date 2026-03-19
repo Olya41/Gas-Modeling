@@ -20,7 +20,8 @@ def init_lattice(N: int, cell_size: float) -> np.ndarray:
 
 
 def init_velocities(N: int, T_target: float = 1.0) -> np.ndarray:
-    vel = np.random.normal(0, np.sqrt(T_target), (N, 3))
+    rng = np.random.default_rng(42)
+    vel = rng.normal(0, np.sqrt(T_target), (N, 3))
     vel -= vel.mean(axis=0)
     return vel
 
@@ -32,6 +33,9 @@ def moving(positions0: np.ndarray,
            dt: float = 0.01,
            r_cut: float = 2.5,
            energy_list: bool = False,
+           T_want: float = 1.0,
+           renew_freq: int = 50,
+           crit_num: int = 10,
            **kwargs) -> Tuple[np.ndarray, np.ndarray]:
 
     pos = positions0.copy()
@@ -53,8 +57,22 @@ def moving(positions0: np.ndarray,
         energies[0] = [ek, pe, ek + pe]
         print(f"Step 0/{NUM}: Ek={ek:.4f}, Ep={pe:.4f}, Etot={ek+pe:.4f}, T={T_kin:.4f}")
 
+    rescale_count = 0
+    last_rescale_step = 0
+
     for t in range(1, NUM + 1):
         pos, vel, acc = velocity_verlet_step(pos, vel, acc, dt, cell_size, r_cut)
+
+        # Velocity rescaling thermostat
+        if rescale_count < crit_num and t % renew_freq == 0:
+            ek_cur = kinetic_energy(vel)
+            T_cur = 2 * ek_cur / (3 * n)
+            if T_cur > 0:
+                scale = np.sqrt(T_want / T_cur)
+                vel *= scale
+            rescale_count += 1
+            last_rescale_step = t
+
         positions_traj[t] = pos
         velocities_traj[t] = vel
         if energy_list:
@@ -71,6 +89,8 @@ def moving(positions0: np.ndarray,
     times = np.arange(NUM + 1) * dt
     pos_with_time = np.column_stack([times, positions_traj.reshape(NUM + 1, n * 3)])
     vel_with_time = np.column_stack([times, velocities_traj.reshape(NUM + 1, n * 3)])
+
+    print(f"Подогревание прекратилось на шаге {last_rescale_step}")
 
     np.savetxt("output/data/positions.txt", pos_with_time)
     np.savetxt("output/data/velocities.txt", vel_with_time)

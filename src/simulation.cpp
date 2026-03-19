@@ -59,7 +59,7 @@ void run_simulation(const SimParams& p) {
     double cell_size = std::cbrt(static_cast<double>(p.N) / p.rho);
 
     auto pos = init_lattice(p.N, cell_size);
-    auto vel = init_velocities(p.N);
+    auto vel = init_velocities(p.N, p.T_want);
     std::vector<Vec3> acc(p.N, {0.0, 0.0, 0.0});
     compute_accelerations(pos, cell_size, p.r_cut, acc);
 
@@ -88,9 +88,24 @@ void run_simulation(const SimParams& p) {
                     p.NUM, ek, pe, ek + pe, T_kin);
     }
 
+    int rescale_count = 0;
+    int last_rescale_step = 0;
+
     for (int step = 1; step <= p.NUM; ++step) {
         velocity_verlet_step(pos, vel, acc, p.dt, cell_size, p.r_cut);
         t = step * p.dt;
+
+        // Velocity rescaling thermostat
+        if (rescale_count < p.crit_num && step % p.renew_freq == 0) {
+            double ek = kinetic_energy(vel);
+            double T_cur = 2.0 * ek / (3.0 * p.N);
+            double scale = std::sqrt(p.T_want / T_cur);
+            for (int i = 0; i < p.N; ++i)
+                for (int d = 0; d < 3; ++d)
+                    vel[i][d] *= scale;
+            ++rescale_count;
+            last_rescale_step = step;
+        }
 
         write_row(f_pos, t, pos, p.N);
         write_row(f_vel, t, vel, p.N);
@@ -108,6 +123,8 @@ void run_simulation(const SimParams& p) {
                 std::printf("Step %d/%d\n", step, p.NUM);
         }
     }
+
+    std::printf("Подогревание прекратилось на шаге %d\n", last_rescale_step);
 
     f_pos.close();
     f_vel.close();

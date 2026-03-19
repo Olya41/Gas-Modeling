@@ -27,6 +27,9 @@ static SimParams load_params(const std::string& filename = "params") {
     if (kv.count("rho"))        p.rho        = std::stod(kv["rho"]);
     if (kv.count("r_cut"))      p.r_cut      = std::stod(kv["r_cut"]);
     if (kv.count("energy_log")) p.energy_log = (kv["energy_log"] == "true");
+    if (kv.count("T_want"))     p.T_want     = std::stod(kv["T_want"]);
+    if (kv.count("renew_freq")) p.renew_freq = std::stoi(kv["renew_freq"]);
+    if (kv.count("crit_num"))   p.crit_num   = std::stoi(kv["crit_num"]);
     return p;
 }
 
@@ -43,6 +46,9 @@ int main() {
     std::cout << "cell_size  = " << cell_size << std::endl;
     std::cout << "r_cut      = " << p.r_cut << std::endl;
     std::cout << "energy_log = " << std::boolalpha << p.energy_log << std::endl;
+    std::cout << "T_want     = " << p.T_want << std::endl;
+    std::cout << "renew_freq = " << p.renew_freq << std::endl;
+    std::cout << "crit_num   = " << p.crit_num << std::endl;
     std::cout << std::endl;
 
     run_simulation(p);

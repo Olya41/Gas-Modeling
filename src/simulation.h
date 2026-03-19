@@ -9,6 +9,9 @@ struct SimParams {
     double rho        = 0.3;
     double r_cut      = 2.5;
     bool   energy_log = true;
+    double T_want     = 1.0;
+    int    renew_freq = 50;
+    int    crit_num   = 10;
 };
 
 std::vector<Vec3> init_lattice(int N, double cell_size);
