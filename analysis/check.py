@@ -38,7 +38,7 @@ v_arr = np.linspace(v_all.min() * 1.3, v_all.max() * 1.3, 200)
 boltzmann_1d = (1 / (2 * np.pi * T_kin))**0.5 * np.exp(-v_arr**2 / (2 * T_kin))
 
 plt.figure(figsize=(8, 5))
-plt.hist(v_all, bins=30, density=True, alpha=0.7, label="v_x + v_y + v_z")
+plt.hist(v_all, bins=60, density=True, alpha=0.7, label="v_x + v_y + v_z")
 plt.plot(v_arr, boltzmann_1d, "r-", lw=2, label=f"Boltzmann (T_kin = {T_kin:.3f})")
 plt.xlabel("v")
 plt.ylabel("p(v)")
@@ -49,7 +49,7 @@ plt.savefig("output/plots/vel_gist.png", dpi=150)
 print(f"T_kin = {T_kin:.4f}, {n_snapshots} snapshots, t = [{t_first:.2f}, {t_last:.2f}]")
 
 # Линеаризация: ln(P) vs v^2
-counts, bin_edges = np.histogram(v_all, bins=30, density=True)
+counts, bin_edges = np.histogram(v_all, bins=60, density=True)
 bin_centers = 0.5 * (bin_edges[:-1] + bin_edges[1:])
 mask = counts > 0
 v2 = bin_centers[mask]**2
@@ -67,6 +67,27 @@ plt.title("Linearization")
 plt.legend()
 plt.tight_layout()
 plt.savefig("output/plots/vel_linear.png", dpi=150)
+
+# Дополнительный график с пунктиром на 2*max(Ek)/m и продленной теоретической линией
+# Рассчитываем максимальную кинетическую энергию
+Ek_max = np.max(np.sum(0.5 * rows[:, 1:].reshape(n_snapshots, N, 3)**2, axis=(1,2)))
+v2_max = 2*Ek_max  # v² = 2E_max/m
+
+# Создаем расширенный массив v² для теоретической линии до пунктира
+v2_extended = np.linspace(0, v2_max, 200)
+theory_line = slope_kin * v2_extended + intercept_kin
+
+plt.figure(figsize=(8, 5))
+plt.scatter(v2, ln_p, label="Simulation")
+plt.plot(v2_extended, theory_line, "r-", lw=2, label=f"Theory: T_kin = {T_kin:.3f}")
+plt.axvline(x=v2_max, color='red', linestyle='--', label=f'v² = 2E_max/m = {v2_max:.2f}')
+plt.xlabel(r"$v^2$")
+plt.ylabel("ln p(v)")
+plt.title("Linearization with max energy line")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("output/plots/vel_linear_with_max.png", dpi=150)
 
 # Energy vs time
 edata = np.loadtxt("output/data/energies.txt")

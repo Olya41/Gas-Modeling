@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from typing import Tuple
 from verlet import velocity_verlet_step, kinetic_energy, potential_energy
 from forces import compute_accelerations
@@ -98,19 +97,9 @@ def moving(positions0: np.ndarray,
     if energies is not None:
         np.savetxt("output/data/energies.txt", np.column_stack([times, energies]),
                    header="t    Ek    Ep    Etot")
-        plt.figure(figsize=(10, 6))
-        plt.plot(times, energies[:, 0], label="Ek")
-        plt.plot(times, energies[:, 1], label="Ep")
-        plt.plot(times, energies[:, 2], label="Etot", lw=2, color="black")
-        plt.xlabel("t")
-        plt.ylabel("E")
-        plt.title("E(t)")
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig("output/plots/energy.png", dpi=150)
     else:
         open("output/data/energies.txt", "w").close()
 
-    print("Saved to output/data/ and output/plots/")
+    print("Saved to output/data/")
 
     return positions_traj, velocities_traj, energies
