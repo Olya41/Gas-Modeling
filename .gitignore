@@ -1,9 +1,14 @@
-output/
+output/data/
 build/
 __pycache__/
 *.pyc
 *.txt
 !CMakeLists.txt
-*.png
+output/plots/*.png
+!output/plots/vel_gist.png
+!output/plots/vel_linear.png
+!output/plots/vel_linear_with_max.png
+!output/plots/energy.png
+!output/plots/total_energy.png
 *.mp4
 *.xyz
