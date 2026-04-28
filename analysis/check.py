@@ -1,9 +1,15 @@
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Корень репозитория (запуск из analysis/ или из корня)
+ROOT = Path(__file__).resolve().parent.parent
+
+
 # Читаем NUM_FOR_HIST из params
 def read_param(name, default=None):
-    with open("params") as f:
+    with open(ROOT / "params") as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith("#"):
@@ -19,7 +25,7 @@ if raw == "NUM":
     raw = read_param("NUM", "1000")
 NUM_FOR_HIST = int(raw)
 
-data = np.loadtxt("output/data/velocities.txt")
+data = np.loadtxt(ROOT / "output/data/velocities.txt")
 N = (data.shape[1] - 1) // 3
 total_rows = data.shape[0]
 
@@ -45,7 +51,7 @@ plt.ylabel("p(v)")
 plt.title("Velocity distribution")
 plt.legend()
 plt.tight_layout()
-plt.savefig("output/plots/vel_gist.png", dpi=150)
+plt.savefig(ROOT / "output/plots/vel_gist.png", dpi=150)
 print(f"T_kin = {T_kin:.4f}, {n_snapshots} snapshots, t = [{t_first:.2f}, {t_last:.2f}]")
 
 # Линеаризация: ln(P) vs v^2
@@ -66,7 +72,7 @@ plt.ylabel("ln p(v)")
 plt.title("Linearization")
 plt.legend()
 plt.tight_layout()
-plt.savefig("output/plots/vel_linear.png", dpi=150)
+plt.savefig(ROOT / "output/plots/vel_linear.png", dpi=150)
 
 # Дополнительный график с пунктиром на 2*max(Ek)/m и продленной теоретической линией
 # Рассчитываем максимальную кинетическую энергию
@@ -87,10 +93,10 @@ plt.title("Linearization with max energy line")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-plt.savefig("output/plots/vel_linear_with_max.png", dpi=150)
+plt.savefig(ROOT / "output/plots/vel_linear_with_max.png", dpi=150)
 
 # Energy vs time
-edata = np.loadtxt("output/data/energies.txt")
+edata = np.loadtxt(ROOT / "output/data/energies.txt")
 times = edata[:, 0]
 Ek_t  = edata[:, 1]
 Ep_t  = edata[:, 2]
@@ -105,7 +111,7 @@ plt.ylabel("E")
 plt.title("E(t)")
 plt.legend()
 plt.tight_layout()
-plt.savefig("output/plots/energy.png", dpi=150)
+plt.savefig(ROOT / "output/plots/energy.png", dpi=150)
 print("Saved output/plots/energy.png")
 
 # Total energy separately
@@ -115,5 +121,5 @@ plt.xlabel('t')
 plt.ylabel('Etot')
 plt.title('Total Energy E(t)')
 plt.tight_layout()
-plt.savefig("output/plots/total_energy.png", dpi=150)
+plt.savefig(ROOT / "output/plots/total_energy.png", dpi=150)
 print("Saved output/plots/total_energy.png")
