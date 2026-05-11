@@ -33,9 +33,8 @@ import io
 import subprocess
 import numpy as np
 import matplotlib.pyplot as plt
-from itertools import combinations
-
 from count_sigma import e_kin_com, r_min_from_energy, v_from_T
+from free_path_core import compute_free_path_lengths
 from msd_plots import plot_msd
 from sim_io import ROOT, read_param
 
@@ -105,45 +104,9 @@ print()
 # Основная функция: детектирование + длины пробега для заданного threshold
 # ---------------------------------------------------------------------------
 def compute_free_paths(threshold):
-    particle_peri = [[] for _ in range(N)]
-
-    for i, j in combinations(range(N), 2):
-        dr    = positions[:, j, :] - positions[:, i, :]
-        dr   -= cell_size * np.round(dr / cell_size)   # минимальное изображение (ПГУ)
-        dists = np.linalg.norm(dr, axis=1)
-
-        below = dists < threshold
-        if not np.any(below):
-            continue
-
-        padded       = np.empty(M + 2, dtype=bool)
-        padded[0]    = False
-        padded[1:-1] = below
-        padded[-1]   = False
-        diff   = np.diff(padded.astype(np.int8))
-        starts = np.where(diff ==  1)[0]
-        ends   = np.where(diff == -1)[0]
-
-        for s, e in zip(starts, ends):
-            if s == 0 or e == M:
-                continue
-            peri = s + int(np.argmin(dists[s:e]))
-            particle_peri[i].append(peri)
-            particle_peri[j].append(peri)
-
-    free_paths = []
-    for i in range(N):
-        peri_sorted = sorted(set(particle_peri[i]))
-        if len(peri_sorted) < 2:
-            continue
-        for k in range(len(peri_sorted) - 1):
-            a, b = peri_sorted[k], peri_sorted[k + 1]
-            if b <= a + 1:
-                continue
-            speeds = np.linalg.norm(velocities[a:b, i, :], axis=1)
-            free_paths.append(float(np.sum(speeds) * dt_sim))
-
-    return free_paths
+    return compute_free_path_lengths(
+        positions, velocities, cell_size, dt_sim, threshold
+    )
 
 
 # ---------------------------------------------------------------------------

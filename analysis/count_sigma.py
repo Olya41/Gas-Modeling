@@ -4,7 +4,7 @@
 Классически: в ближайшей остановке E = V(r_min) на ветви 0<r<1 (LJ «стенка»);
 численно: корень 4(r^{-12}−r^{-6}) = E, даёт r_min(T).
 
-Точка (T, r_min) из params (T_want) рисуется ярким маркером.
+На графике только связь V=3T/4 и v_rel=sqrt(3T) в ЦОМ; маркер — T_want из params.
 
   python3 analysis/count_sigma.py
 
@@ -69,6 +69,22 @@ def e_kin_com(v_rel: float) -> float:
     return 0.25 * (v_rel * v_rel)
 
 
+def r_lj_turn_from_E(E_arr: np.ndarray) -> np.ndarray:
+    """
+    Решение 4(u²−u)=E при u=r^{−6} (поворот, r<1): r^6 = 2/(1+√(1+E)).
+
+    При E→0+ внутреннее стремление к r→1 слева через r^6 = 2(√(1+E)−1)/E.
+    """
+    E = np.asarray(E_arr, dtype=float)
+    inner = np.where(E > 0.0, 2.0 * (np.sqrt(1.0 + E) - 1.0) / E, np.nan)
+    return np.power(inner, 1.0 / 6.0)
+
+
+def r_V_equals_three_fourths_T(T_arr: np.ndarray) -> np.ndarray:
+    """4/r¹² − 4/r⁶ = 3T/4 ⇒ E = 3T/4 (как E_кин в модели v_rel = √(3T), μ = ½)."""
+    return r_lj_turn_from_E(0.75 * np.asarray(T_arr, dtype=float))
+
+
 def main() -> None:
     T_want = float(read_param("T_want", "1.0"))
 
@@ -76,17 +92,21 @@ def main() -> None:
     T_lo, T_hi = 0.05, 5.0
     T_list = np.linspace(T_lo, T_hi, n)
 
-    r_mins = np.empty(n)
-    for i, t in enumerate(T_list):
-        vr = v_from_T(t)
-        e = e_kin_com(vr)
-        r_mins[i] = r_min_from_energy(e)
-    r_at_Twant = r_min_from_energy(e_kin_com(v_from_T(T_want)))
+    r_curve = r_V_equals_three_fourths_T(T_list)
+    r_at_Twant = float(r_V_equals_three_fourths_T(np.asarray([T_want]))[0])
 
     fs = 14
     fig, ax = plt.subplots(figsize=(8, 5.5))
     ax.plot(
-        T_list, r_mins, "C0-", lw=2.0, label=rf"мин. $r$ при $v = \sqrt{{3T}}$"
+        T_list,
+        r_curve,
+        "C0-",
+        lw=2.2,
+        label=(
+            r"$\frac{4}{r^{12}}-\frac{4}{r^{6}}=\frac{3T}{4}$"
+            "\n"
+            r"$r_{\min}=\left(\frac{8\left(\sqrt{1+\frac{3T}{4}}-1\right)}{3T}\right)^{1/6}$"
+        ),
     )
     ax.scatter(
         [T_want],
@@ -102,7 +122,7 @@ def main() -> None:
     ax.set_ylabel(r"$r_{\min}$ (в ед. $\sigma$)", fontsize=fs)
     ax.set_title(r"$r_{\min}$ vs $T$", fontsize=14)
     ax.grid(True, alpha=0.4)
-    ax.legend(loc="best", fontsize=10)
+    ax.legend(loc="best", fontsize=11, alignment="left")
     fig.tight_layout()
     out = ROOT / "output/plots/sigma_vs_T.png"
     out.parent.mkdir(parents=True, exist_ok=True)

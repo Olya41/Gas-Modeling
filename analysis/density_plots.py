@@ -44,6 +44,42 @@ def _pick_central_index(pos_frame: np.ndarray, l_box: float) -> int:
     return int(np.argmin(np.sum(d * d, axis=1)))
 
 
+def _first_shell_jump_bounds(
+    r: np.ndarray,
+    n_r: np.ndarray,
+    rel_tol: float = 1e-3,
+) -> tuple[float, float]:
+    """
+    Начало резкого роста n(r) (первый бин выше порога относительно max)
+    и r первого локального максимума справа (вершина первой оболочки).
+    """
+    m = np.isfinite(n_r) & (r > 0)
+    if not np.any(m):
+        return float("nan"), float("nan")
+    r_s = r[m]
+    n_s = n_r[m]
+    n_max = float(np.nanmax(n_s))
+    if n_max <= 0.0:
+        return float("nan"), float("nan")
+    tol = rel_tol * n_max
+    above = np.flatnonzero(n_s > tol)
+    if above.size == 0:
+        return float("nan"), float("nan")
+    i0 = int(above[0])
+    r_start = float(r_s[i0])
+    i_peak = None
+    for i in range(i0 + 1, len(n_s) - 1):
+        if n_s[i] > n_s[i - 1] and n_s[i] >= n_s[i + 1]:
+            i_peak = i
+            break
+    if i_peak is None:
+        j = int(np.argmax(n_s[i0:])) + i0
+        r_peak = float(r_s[j])
+    else:
+        r_peak = float(r_s[i_peak])
+    return r_start, r_peak
+
+
 def compute_radial_density(
     root=ROOT,
     n_bins: int | None = None,
@@ -147,6 +183,10 @@ def plot_density(
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(9, 7), sharex=True)
     m = np.isfinite(n_r) & (r > 0)
     ax1.plot(r[m], n_r[m], "C0-", lw=1.8, label=r"$\langle n(r)\rangle$")
+    r_jump0, r_jump1 = _first_shell_jump_bounds(r, n_r)
+    if np.isfinite(r_jump0) and np.isfinite(r_jump1):
+        ax1.axvline(r_jump0, color="0.35", ls=":", lw=1.4, alpha=0.85)
+        ax1.axvline(r_jump1, color="0.35", ls=":", lw=1.4, alpha=0.85)
     ax1.axhline(rho0, color="0.4", ls="--", lw=1.2, label=r"$\rho_0 = N/L^3$")
     ax1.set_ylabel(r"локальная плотность $n(r)$", fontsize=fs_label)
     ax1.grid(True, alpha=0.35)
@@ -160,6 +200,9 @@ def plot_density(
     ax1.tick_params(axis="both", labelsize=fs_tick)
 
     ax2.plot(r[m], g_r[m], "C1-", lw=1.8, label=r"$\langle n(r)\rangle / \rho_0$")
+    if np.isfinite(r_jump0) and np.isfinite(r_jump1):
+        ax2.axvline(r_jump0, color="0.35", ls=":", lw=1.4, alpha=0.85)
+        ax2.axvline(r_jump1, color="0.35", ls=":", lw=1.4, alpha=0.85)
     ax2.axhline(1.0, color="0.4", ls="--", lw=1.0)
     ax2.set_xlabel(r"расстояние $r$ (ПГУ), ед. $\sigma$", fontsize=fs_label)
     ax2.set_ylabel(r"$n(r)/\rho_0$", fontsize=fs_label)
@@ -168,37 +211,14 @@ def plot_density(
     ax2.tick_params(axis="both", labelsize=fs_tick)
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
-    print(f"сохранено: {out_path}")
 
 
 def main() -> None:
     d = compute_radial_density()
-    n = d["N"]
-    l_box = d["L"]
-    print("--- радиальная плотность вокруг одной «центральной» частицы ---")
-    print(f"  N = {n},  rho = {d['rho']},  L = (N/rho)^{{1/3}} = {l_box:.6f}")
-    print(
-        f"  кадр начала: i = {d['i_start']},  t = {d['t_start']:.4f}  "
-        f"(dens_t0 / msd_t0 / 0.1·T, см. код)"
-    )
-    print(
-        f"  конец: t = {d['t_end']:.4f},  снимков в среднем: {d['n_frames_used']},  "
-        f"dens_stride = {d['time_stride']}"
-    )
-    print(
-        f"  центр. частица: индекс i = {d['central_index']}  "
-        f"(ближайшая (ПГУ) к (L/2, L/2, L/2) на t_start)"
-    )
-    print(
-        f"  радиус сетки: 0…{0.5 * l_box * 0.999:.4f}  (< L/2),  bins = {d['n_bins']}"
-    )
-    print(f"  rho_0 = N/L^3 = {d['rho_mean']:.6f}")
+    r_j0, r_j1 = _first_shell_jump_bounds(d["r_center"], d["n_density"])
+    r_mean = 0.5 * (r_j0 + r_j1)
+    print(f"начало: {r_j0:.6g} σ\nконец: {r_j1:.6g} σ\nсреднее: {r_mean:.6g} σ")
     plot_density(d=d)
-    m = np.isfinite(d["n_density"])
-    k = m & (d["r_center"] > 0)
-    r_mid = float(np.median(d["r_center"][k]))
-    n_mid = float(np.interp(r_mid, d["r_center"][k], d["n_density"][k]))
-    print(f"  пример: n(r≈{r_mid:.2f}) / rho_0 ≈ {n_mid / d['rho_mean']:.3f}")
 
 
 if __name__ == "__main__":
